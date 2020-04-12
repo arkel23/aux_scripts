@@ -144,6 +144,11 @@ def load_HR(path_calc_str, path_truth_str, low_time, printFlag):
         #print(df_truth.shape)
         hr_truth = np.array(df_truth.iloc[1])
         time_truth = np.array(df_truth.iloc[0])
+        # FOR NCTU PCS DB HR array is index 1, time is index 0
+        #hr_truth = np.array(df_truth.iloc[1])
+        #time_truth = np.array(df_truth.iloc[2])
+        # FOR UBFC DB HR array is index 1, time is index 2
+
     else:
         staticBPM = input('No ground truth file found. Please input static BPM: ')
         time_truth = np.copy(time_calc)
