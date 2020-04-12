@@ -179,8 +179,19 @@ def load_HR(path_calc_str, path_truth_str, low_time, printFlag):
     print(hr_us.shape, time_us.shape, hr_ss.shape, time_ss.shape)
     print(time_us[0], time_ss[0], time_us[-1], time_ss[-1])
 
-    plots_individual(time_us, hr_us, time_ss, hr_ss, calc_name, staticBPMflag)
-    metrics(time_us, hr_us, time_ss, hr_ss, calc_name, staticBPMflag, printFlag)
+    if len_calc_orig == len_same:
+        hr_calc_f = hr_ss
+        time_calc_f = time_ss
+        hr_tr_f = hr_us
+        time_tr_f = time_us
+    else:
+        hr_calc_f = hr_us
+        time_calc_f = time_us
+        hr_tr_f = hr_ss
+        time_tr_f = time_ss
+
+    plots_individual(time_tr_f, hr_tr_f, time_calc_f, hr_calc_f, calc_name, staticBPMflag)
+    metrics(time_tr_f, hr_tr_f, time_calc_f, hr_calc_f, calc_name, staticBPMflag, printFlag)
 
 def main():
    
